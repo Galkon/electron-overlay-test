@@ -132,6 +132,7 @@ const start = async () => {
       height
     })
 
+    overlay.removeMenu()
     overlay.setIgnoreMouseEvents(true)
 
     if (props.delayShow) {

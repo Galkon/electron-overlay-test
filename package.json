@@ -58,7 +58,7 @@
     "@rollup/plugin-replace": "^5.0.5",
     "concurrently": "^8.2.2",
     "cross-env": "^7.0.3",
-    "electron": "^27.0.4",
+    "electron": "^22.3.27",
     "electron-builder": "^24.6.4",
     "rollup": "^4.4.0",
     "rollup-plugin-babel": "^4.4.0",
