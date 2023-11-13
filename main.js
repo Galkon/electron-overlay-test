@@ -128,6 +128,7 @@ const start = async () => {
       alwaysOnTop: props.alwaysOnTop ?? true,
       hasShadow: props.hasShadow,
       backgroundMaterial: props.backgroundMaterial,
+      thickFrame: props.thickFrame,
       x,
       y,
       width,

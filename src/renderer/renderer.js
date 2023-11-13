@@ -116,6 +116,12 @@ const OverlayTests = [
     delayShow: false,
     backgroundMaterial: 'none',
     hasShadow: false
+  },
+  {
+    name: 'Overlay Test 15',
+    alwaysOnTop: true,
+    delayShow: false,
+    thickFrame: false,
   }
 ]
 
