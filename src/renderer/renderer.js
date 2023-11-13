@@ -17,6 +17,7 @@ const Body = styled.div`
 const Buttons = styled.div`
   display: flex;
   gap: 16px;
+  flex-wrap: wrap;
 `
 
 const ActiveTest = styled.span`
@@ -44,7 +45,7 @@ const App = () => {
     <Body>
       {
         activeTest &&
-        <ActiveTest>Active Test: {activeTest.name}, {activeTest.width}x{activeTest.height}</ActiveTest>
+        <ActiveTest>Active Test: {activeTest.name}, {activeTest.width}x{activeTest.height} at {activeTest.x},{activeTest.y}</ActiveTest>
       }
       <Buttons>
         <Button onClick={() => {
@@ -85,7 +86,40 @@ const App = () => {
             delayShow: false
           })
         }}>
-          Overlay Test 3
+          Overlay Test 4
+        </Button>
+        <Button  onClick={() => {
+          window.ipc.send('open-overlay', {
+            name: 'Overlay Test 5',
+            alwaysOnTop: true,
+            backgroundColor: '#00000000',
+            delayShow: true,
+            offsetSize: true
+          })
+        }}>
+          Overlay Test 5
+        </Button>
+        <Button  onClick={() => {
+          window.ipc.send('open-overlay', {
+            name: 'Overlay Test 6',
+            alwaysOnTop: true,
+            backgroundColor: '#00000000',
+            delayShow: false,
+            offsetSize: true
+          })
+        }}>
+          Overlay Test 6
+        </Button>
+        <Button  onClick={() => {
+          window.ipc.send('open-overlay', {
+            name: 'Overlay Test 7',
+            alwaysOnTop: false,
+            backgroundColor: '#00000000',
+            delayShow: false,
+            offsetSize: true
+          })
+        }}>
+          Overlay Test 6
         </Button>
       </Buttons>
     </Body>

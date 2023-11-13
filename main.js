@@ -105,8 +105,10 @@ const start = async () => {
     console.log('Initializing overlay with properties:', props)
 
     const display = screen.getPrimaryDisplay()
-    const width = display.workArea.width
-    const height = display.workArea.height
+    const x = display.workArea.x + (props.offsetSize ? 1 : 0)
+    const y = display.workArea.y + (props.offsetSize ? 1 : 0)
+    const width = display.workArea.width - (props.offsetSize ? 2 : 0)
+    const height = display.workArea.height - (props.offsetSize ? 2 : 0)
 
     console.log('Overlay dimensions:', width, height)
 
@@ -122,6 +124,8 @@ const start = async () => {
       fullscreen: false,
       movable: false,
       alwaysOnTop: props.alwaysOnTop ?? true,
+      x,
+      y,
       width,
       height
     })
@@ -144,6 +148,8 @@ const start = async () => {
 
     event.reply('overlay-opened', {
       name: props.name,
+      x,
+      y,
       width,
       height
     })
