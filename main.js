@@ -64,6 +64,8 @@ const createWindow = async () => {
  * @returns {Promise<void>}
  */
 const start = async () => {
+  app.disableHardwareAcceleration()
+
   await app.whenReady()
   let window = await createWindow()
   let overlay

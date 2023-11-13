@@ -1,7 +1,7 @@
 {
   "name": "electron-overlay-test",
   "productName": "Electron Overlay Test",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Test electron overlay with transparent windows.",
   "main": "main.js",
   "scripts": {
