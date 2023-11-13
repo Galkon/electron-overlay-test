@@ -115,6 +115,7 @@ const start = async () => {
     overlay = new BrowserWindow({
       show: !props.delayShow,
       frame: false,
+      titleBarStyle: 'hidden',
       transparent: true,
       backgroundColor: props.backgroundColor,
       skipTaskbar: true,
