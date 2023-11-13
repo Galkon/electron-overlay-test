@@ -124,6 +124,7 @@ const start = async () => {
       closable: false,
       fullscreen: false,
       movable: false,
+      resizable: false,
       alwaysOnTop: props.alwaysOnTop ?? true,
       x,
       y,
@@ -134,11 +135,20 @@ const start = async () => {
     overlay.setIgnoreMouseEvents(true)
 
     if (props.delayShow) {
-      await new Promise(resolve => setTimeout(resolve, 3000))
+      await new Promise(resolve => setTimeout(resolve, 2000))
+
+      if (props.controlSizeAndBounds) {
+        overlay.setContentSize(width, height)
+        overlay.setBounds({x, y, width, height})
+      }
+
       if (!props.alwaysOnTop) {
         overlay.setAlwaysOnTop(true, 'status')
       }
       overlay.showInactive()
+    } else if (props.controlSizeAndBounds) {
+      overlay.setContentSize(width, height)
+      overlay.setBounds({x, y, width, height})
     }
 
     const overlayHtml = isDevelopment
