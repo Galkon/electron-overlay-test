@@ -113,11 +113,9 @@ const start = async () => {
     console.log('Overlay dimensions:', width, height)
 
     overlay = new BrowserWindow({
-      show: !props.delayShow,
       frame: false,
       titleBarStyle: 'hidden',
       transparent: true,
-      backgroundColor: props.backgroundColor,
       skipTaskbar: true,
       minimizable: false,
       maximizable: false,
@@ -125,7 +123,11 @@ const start = async () => {
       fullscreen: false,
       movable: false,
       resizable: false,
+      show: !props.delayShow,
+      backgroundColor: props.backgroundColor,
       alwaysOnTop: props.alwaysOnTop ?? true,
+      hasShadow: props.hasShadow,
+      backgroundMaterial: props.backgroundMaterial,
       x,
       y,
       width,
@@ -150,6 +152,10 @@ const start = async () => {
     } else if (props.controlSizeAndBounds) {
       overlay.setContentSize(width, height)
       overlay.setBounds({x, y, width, height})
+    }
+
+    if (props.setBackgroundColor) {
+      overlay.setBackgroundColor(props.backgroundColor ?? '#00000000')
     }
 
     const overlayHtml = isDevelopment

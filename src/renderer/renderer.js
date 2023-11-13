@@ -85,6 +85,37 @@ const OverlayTests = [
     backgroundColor: '#00000000',
     delayShow: false,
     controlSizeAndBounds: true
+  },
+  {
+    name: 'Overlay Test 10',
+    alwaysOnTop: true,
+    backgroundColor: '#00FF00FF',
+    delayShow: false,
+    setBackgroundColor: true
+  },
+  {
+    name: 'Overlay Test 11',
+    alwaysOnTop: true,
+    delayShow: false
+  },
+  {
+    name: 'Overlay Test 12',
+    alwaysOnTop: true,
+    delayShow: false,
+    hasShadow: false
+  },
+  {
+    name: 'Overlay Test 13',
+    alwaysOnTop: true,
+    delayShow: false,
+    backgroundMaterial: 'none'
+  },
+  {
+    name: 'Overlay Test 14',
+    alwaysOnTop: true,
+    delayShow: false,
+    backgroundMaterial: 'none',
+    hasShadow: false
   }
 ]
 
