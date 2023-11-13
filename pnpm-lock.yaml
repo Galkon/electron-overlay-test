@@ -10,7 +10,7 @@ specifiers:
   '@rollup/plugin-replace': ^5.0.5
   concurrently: ^8.2.2
   cross-env: ^7.0.3
-  electron: ^27.0.4
+  electron: ^22.3.27
   electron-builder: ^24.6.4
   react: ^18.2.0
   react-dom: ^18.2.0
@@ -38,7 +38,7 @@ devDependencies:
   '@rollup/plugin-replace': 5.0.5_rollup@4.4.0
   concurrently: 8.2.2
   cross-env: 7.0.3
-  electron: 27.0.4
+  electron: 22.3.27
   electron-builder: 24.6.4
   rollup: 4.4.0
   rollup-plugin-babel: 4.4.0_@babel+core@7.23.3+rollup@4.4.0
@@ -1660,7 +1660,7 @@ packages:
     dependencies:
       '@types/http-cache-semantics': 4.0.4
       '@types/keyv': 3.1.4
-      '@types/node': 18.18.9
+      '@types/node': 20.9.0
       '@types/responselike': 1.0.3
     dev: true
 
@@ -1700,7 +1700,7 @@ packages:
   /@types/keyv/3.1.4:
     resolution: {integrity: sha512-BQ5aZNSCpj7D6K2ksrRCTmKRLEpnPvWDiLPfoGyhZ++8YtiK9d/3DBKPJgry359X/P1PfruyYwvnvwFjuEiEIg==}
     dependencies:
-      '@types/node': 18.18.9
+      '@types/node': 20.9.0
     dev: true
 
   /@types/minimatch/5.1.2:
@@ -1711,10 +1711,8 @@ packages:
     resolution: {integrity: sha512-nG96G3Wp6acyAgJqGasjODb+acrI7KltPiRxzHPXnP3NgI28bpQDRv53olbqGXbfcgF5aiiHmO3xpwEpS5Ld9g==}
     dev: true
 
-  /@types/node/18.18.9:
-    resolution: {integrity: sha512-0f5klcuImLnG4Qreu9hPj/rEfFq6YRc5n2mAjSsH+ec/mJL+3voBH0+8T7o8RpFjH7ovc+TRsL/c7OYIQsPTfQ==}
-    dependencies:
-      undici-types: 5.26.5
+  /@types/node/16.18.61:
+    resolution: {integrity: sha512-k0N7BqGhJoJzdh6MuQg1V1ragJiXTh8VUBAZTWjJ9cUq23SG0F0xavOwZbhiP4J3y20xd6jxKx+xNUhkMAi76Q==}
     dev: true
 
   /@types/node/20.9.0:
@@ -1738,7 +1736,7 @@ packages:
   /@types/responselike/1.0.3:
     resolution: {integrity: sha512-H/+L+UkTV33uf49PH5pCAUBVPNj2nDBXTN+qS1dOwyyg24l3CcicicCA7ca+HMvJBZcFgl5r8e+RR6elsb4Lyw==}
     dependencies:
-      '@types/node': 18.18.9
+      '@types/node': 20.9.0
     dev: true
 
   /@types/stylis/4.2.3:
@@ -1754,7 +1752,7 @@ packages:
     resolution: {integrity: sha512-oJoftv0LSuaDZE3Le4DbKX+KS9G36NzOeSap90UIK0yMA/NhKJhqlSGtNDORNRaIbQfzjXDrQa0ytJ6mNRGz/Q==}
     requiresBuild: true
     dependencies:
-      '@types/node': 18.18.9
+      '@types/node': 20.9.0
     dev: true
     optional: true
 
@@ -2452,14 +2450,14 @@ packages:
     resolution: {integrity: sha512-6uhqWBIapTJUxgPTCHH9sqdbxIMPt7oXl0VcAL1kOtlU6aECdcMncCrX5Z7sHQ/invtrC9jUQUef7+HhO8vVFw==}
     dev: true
 
-  /electron/27.0.4:
-    resolution: {integrity: sha512-ob29rN1mtiyAXzF8HsHd5jh8bYKd9OQDakfdOExi0F7epU97gXPHaj6JPjbBJ/vpki5d32SyKVePW4vxeNZk1A==}
+  /electron/22.3.27:
+    resolution: {integrity: sha512-7Rht21vHqj4ZFRnKuZdFqZFsvMBCmDqmjetiMqPtF+TmTBiGne1mnstVXOA/SRGhN2Qy5gY5bznJKpiqogjM8A==}
     engines: {node: '>= 12.20.55'}
     hasBin: true
     requiresBuild: true
     dependencies:
       '@electron/get': 2.0.3
-      '@types/node': 18.18.9
+      '@types/node': 16.18.61
       extract-zip: 2.0.1
     transitivePeerDependencies:
       - supports-color
