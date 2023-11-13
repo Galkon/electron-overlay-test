@@ -64,7 +64,7 @@ const createWindow = async () => {
  * @returns {Promise<void>}
  */
 const start = async () => {
-  app.disableHardwareAcceleration()
+  // app.disableHardwareAcceleration()
 
   await app.whenReady()
   let window = await createWindow()
@@ -157,15 +157,15 @@ const start = async () => {
       overlay.setBounds({x, y, width, height})
     }
 
-    if (props.setBackgroundColor) {
-      overlay.setBackgroundColor(props.backgroundColor ?? '#00000000')
-    }
-
     const overlayHtml = isDevelopment
       ? path.join(__dirname, 'src', 'renderer', 'overlay.html')
       : path.join(__dirname, 'overlay.html')
 
     await overlay.loadURL(`file://${overlayHtml}`)
+
+    if (props.setBackgroundColor) {
+      overlay.setBackgroundColor(props.backgroundColor ?? '#00000000')
+    }
 
     event.reply('overlay-opened', {
       name: props.name,
