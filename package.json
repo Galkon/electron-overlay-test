@@ -1,0 +1,76 @@
+{
+  "name": "electron-overlay-test",
+  "productName": "Electron Overlay Test",
+  "version": "1.0.0",
+  "description": "Test electron overlay with transparent windows.",
+  "main": "main.js",
+  "scripts": {
+    "dev": "concurrently \"pnpm run watch:renderer\" \"cross-env NODE_ENV=development electron .\"",
+    "start": "electron .",
+    "build": "pnpm run build:main && pnpm run build:renderer",
+    "build:main": "rollup -c rollup.main.config.mjs",
+    "build:renderer": "rollup -c rollup.renderer.config.mjs",
+    "watch:renderer": "cross-env NODE_ENV=development rollup --config rollup.renderer.config.mjs --watch",
+    "pack": "electron-builder --dir",
+    "dist": "pnpm run build && electron-builder"
+  },
+  "build": {
+    "appId": "com.electron.overlay.test",
+    "asar": false,
+    "files": [
+      "package.json",
+      {
+        "from": "rollup/",
+        "to": "./",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
+    "extraResources": [
+      {
+        "from": "src/main/preload.js",
+        "to": "app/preload.js"
+      }
+    ],
+    "win": {
+      "target": "nsis"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "publish": {
+      "provider": "github",
+      "releaseType": "release"
+    }
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.23.3",
+    "@babel/preset-env": "^7.23.3",
+    "@babel/preset-react": "^7.23.3",
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-json": "^6.0.1",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-replace": "^5.0.5",
+    "concurrently": "^8.2.2",
+    "cross-env": "^7.0.3",
+    "electron": "^27.0.4",
+    "electron-builder": "^24.6.4",
+    "rollup": "^4.4.0",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-copy": "^3.5.0",
+    "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-livereload": "^2.0.5",
+    "rollup-plugin-serve": "^2.0.2",
+    "rollup-plugin-terser": "^7.0.2"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "styled-components": "^6.1.1"
+  }
+}
