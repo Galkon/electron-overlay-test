@@ -26,12 +26,67 @@ const ActiveTest = styled.span`
   color: mediumspringgreen;
 `
 
+const OverlayTests = [
+  {
+    name: 'Overlay Test 1',
+    alwaysOnTop: true,
+    backgroundColor: '#00000000',
+    delayShow: true
+  },
+  {
+    name: 'Overlay Test 2',
+    alwaysOnTop: true,
+    backgroundColor: '#00000000',
+    delayShow: false
+  },
+  {
+    name: 'Overlay Test 3',
+    alwaysOnTop: false,
+    backgroundColor: '#00000000',
+    delayShow: true
+  },
+  {
+    name: 'Overlay Test 4',
+    alwaysOnTop: false,
+    backgroundColor: '#00000000',
+    delayShow: false
+  },
+  {
+    name: 'Overlay Test 5',
+    alwaysOnTop: true,
+    backgroundColor: '#00000000',
+    delayShow: true,
+    offsetSize: true
+  },
+  {
+    name: 'Overlay Test 6',
+    alwaysOnTop: true,
+    backgroundColor: '#00000000',
+    delayShow: false,
+    offsetSize: true
+  },
+  {
+    name: 'Overlay Test 7',
+    alwaysOnTop: false,
+    backgroundColor: '#00000000',
+    delayShow: false,
+    offsetSize: true
+  }
+]
+
 const App = () => {
   const [activeTest, setActiveTest] = useState(null)
+  const [busy, setBusy] = useState(false)
+
+  const runTest = (props) => {
+    setBusy(true)
+    window.ipc.send('open-overlay', props)
+  }
 
   useEffect(() => {
     const onOverlayOpened = (props) => {
       setActiveTest(props)
+      setBusy(false)
     }
 
     window.ipc.on('overlay-opened', onOverlayOpened)
@@ -48,79 +103,20 @@ const App = () => {
         <ActiveTest>Active Test: {activeTest.name}, {activeTest.width}x{activeTest.height} at {activeTest.x},{activeTest.y}</ActiveTest>
       }
       <Buttons>
-        <Button onClick={() => {
-          window.ipc.send('open-overlay', {
-            name: 'Overlay Test 1',
-            alwaysOnTop: true,
-            backgroundColor: '#00000000',
-            delayShow: true
+        {
+          OverlayTests.map(test => {
+            return (
+              <Button
+                onClick={() => {
+                  runTest(test)
+                }}
+                disabled={busy}
+              >
+                {test.name}
+              </Button>
+            )
           })
-        }}>
-          Overlay Test 1
-        </Button>
-        <Button  onClick={() => {
-          window.ipc.send('open-overlay', {
-            name: 'Overlay Test 2',
-            alwaysOnTop: true,
-            backgroundColor: '#00000000',
-            delayShow: false
-          })
-        }}>
-          Overlay Test 2
-        </Button>
-        <Button  onClick={() => {
-          window.ipc.send('open-overlay', {
-            name: 'Overlay Test 3',
-            alwaysOnTop: false,
-            backgroundColor: '#00000000',
-            delayShow: true
-          })
-        }}>
-          Overlay Test 3
-        </Button>
-        <Button  onClick={() => {
-          window.ipc.send('open-overlay', {
-            name: 'Overlay Test 4',
-            alwaysOnTop: false,
-            backgroundColor: '#00000000',
-            delayShow: false
-          })
-        }}>
-          Overlay Test 4
-        </Button>
-        <Button  onClick={() => {
-          window.ipc.send('open-overlay', {
-            name: 'Overlay Test 5',
-            alwaysOnTop: true,
-            backgroundColor: '#00000000',
-            delayShow: true,
-            offsetSize: true
-          })
-        }}>
-          Overlay Test 5
-        </Button>
-        <Button  onClick={() => {
-          window.ipc.send('open-overlay', {
-            name: 'Overlay Test 6',
-            alwaysOnTop: true,
-            backgroundColor: '#00000000',
-            delayShow: false,
-            offsetSize: true
-          })
-        }}>
-          Overlay Test 6
-        </Button>
-        <Button  onClick={() => {
-          window.ipc.send('open-overlay', {
-            name: 'Overlay Test 7',
-            alwaysOnTop: false,
-            backgroundColor: '#00000000',
-            delayShow: false,
-            offsetSize: true
-          })
-        }}>
-          Overlay Test 7
-        </Button>
+        }
       </Buttons>
     </Body>
   )
